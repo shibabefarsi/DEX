@@ -8,15 +8,15 @@
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
     body {
-    font-family: 'Vazirmatn', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #eef2f7;
-    color: #333;
-    line-height: 1.6;
-    direction: rtl;
-    text-align: right;
-}
+        font-family: 'Vazirmatn', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #eef2f7;
+        color: #333;
+        line-height: 1.6;
+        direction: rtl;
+        text-align: right;
+    }
 
     header {
         background: linear-gradient(135deg, #1abc9c, #16a085);
@@ -101,7 +101,8 @@
         border-top: 1px solid #1abc9c;
         box-sizing: border-box;
         transition: bottom 0.3s;
-        font-size: 0.9em;
+        font-size: 0.95em;
+        color: #000; /* خوانایی بهتر کاربران */
     }
 
     .card:hover .card-extra {
@@ -182,7 +183,8 @@
         padding: 10px;
         border-top: 1px solid #1abc9c;
         transition: bottom 0.3s;
-        font-size: 0.85em;
+        font-size: 0.95em;
+        color: #000;
     }
 
     .dex-type-card:hover .dex-extra {
@@ -204,6 +206,18 @@
             flex-direction: column;
             text-align: center;
         }
+
+        /* موبایل: dex-extra همیشه نمایش و کادر زرد */
+        .dex-extra {
+            position: relative;
+            bottom: 0;
+            display: block;
+            background: #fff9c4;
+            border-top: 1px solid #f0e68c;
+            padding: 10px;
+            margin-top: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
     }
 </style>
 </head>
@@ -219,12 +233,12 @@
         کاربران دارایی‌های خود را مستقیماً از کیف پول مدیریت می‌کنند و تراکنش‌ها از طریق <strong>قرارداد هوشمند</strong> انجام می‌شود.
     </p>
 
-  <h2>
-  مثال‌ها و کارت معرفی 
-  <span style="font-size: 14px; color: gray;">
-    (با نگهداشتن موس روی کارت‌های زیر اطلاعات بیشتر نمایان می‌شود)
-  </span>
-</h2>
+    <h2>
+        مثال‌ها و کارت معرفی 
+        <span style="font-size: 14px; color: gray;">
+        (با نگهداشتن موس روی کارت‌های زیر اطلاعات بیشتر نمایان می‌شود)
+        </span>
+    </h2>
     <div class="card">
         <img src="https://i.ibb.co/HpnhJtbW/cex.png" alt="CEX">
         <div class="card-content">
@@ -277,31 +291,31 @@
     </table>
 
     <h2>
-    انواع DEX
-     <span style="font-size: 14px; color: gray;">
-    (با نگهداشتن موس روی کارت‌های زیر اطلاعات بیشتر نمایان می‌شود)
-  </span>
+        انواع DEX
+        <span style="font-size: 14px; color: gray;">
+        (با نگهداشتن موس روی کارت‌های زیر اطلاعات بیشتر نمایان می‌شود)
+        </span>
     </h2>
-    
+
     <div class="dex-types">
         <div class="dex-type-card">
             <img src="https://i.ibb.co/Txhb6GPc/AMM.png" alt="AMM">
             <h3>AMM (Automated Market Maker)</h3>
             <p>استفاده از استخر نقدینگی و قیمت گذاری خودکار. مثال: Uniswap، ShibaSwap</p>
             <div class="dex-extra">کاربران نقدینگی اضافه می‌کنند و قیمت‌ها به صورت خودکار با نسبت توکن‌ها تعیین می‌شوند.</div>
-     </div>
-        
+        </div>
+
         <div class="dex-type-card">
-          <a href="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" target="_blank" style="display: block; text-align: center;">
-            <img src="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" alt="Order Book" style="max-width: 100%; height: auto;">
-          </a>
-          <span style="font-size: 9px; color: gray; display: block; text-align: center; margin-top: 5px;">
-            (برای دیدن تصویر بزرگ روی این عکس کلیک کنید)
-          </span>
-          <h3 style="text-align: center;">Order Book DEX</h3>
-          <p style="text-align: center;">دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
-        <div class="dex-extra">سفارش‌ها مستقیماً توسط کاربران گذاشته می‌شوند و مطابقت انجام می‌شود.</div>
-    </div>
+            <a href="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" target="_blank" style="display: block; text-align: center;">
+                <img src="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" alt="Order Book" style="max-width: 100%; height: auto;">
+            </a>
+            <span style="font-size: 9px; color: gray; display: block; text-align: center; margin-top: 5px;">
+                (برای دیدن تصویر بزرگ روی این عکس کلیک کنید)
+            </span>
+            <h3 style="text-align: center;">Order Book DEX</h3>
+            <p style="text-align: center;">دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
+            <div class="dex-extra">سفارش‌ها مستقیماً توسط کاربران گذاشته می‌شوند و مطابقت انجام می‌شود.</div>
+        </div>
 
         <div class="dex-type-card">
             <img src="https://i.ibb.co/r2Kq8MpV/hybrid.png" alt="Hybrid">
@@ -310,7 +324,6 @@
             <div class="dex-extra">ترکیبی از استخر نقدینگی و دفتر سفارش برای افزایش سرعت و کارایی.</div>
         </div>
     </div>
-
 </main>
 
 <footer>
