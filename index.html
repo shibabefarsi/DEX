@@ -5,120 +5,220 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>معرفی DEX و CEX</title>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
     body {
-        font-family: 'Tahoma', sans-serif;
-        background: #f4f7f8;
-        color: #333;
-        line-height: 1.6;
+        font-family: 'Vazirmatn', sans-serif;
         margin: 0;
         padding: 0;
+        background: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
     }
+
     header {
-        background: #4caf50;
+        background: #1abc9c;
         color: #fff;
-        padding: 20px 0;
         text-align: center;
-        font-size: 1.8em;
+        padding: 25px 0;
+        font-size: 2em;
         font-weight: bold;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+
     main {
-        max-width: 900px;
+        max-width: 1000px;
         margin: 30px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 20px;
     }
+
     h2 {
-        color: #4caf50;
+        color: #1abc9c;
         margin-top: 25px;
+        margin-bottom: 15px;
     }
+
     p {
+        margin: 12px 0;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
         margin: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: transform 0.2s;
     }
-    ul {
-        margin: 10px 0 15px 20px;
+    .card:hover {
+        transform: translateY(-5px);
     }
-    .example {
-        background: #e8f5e9;
-        border-left: 5px solid #4caf50;
+    .card img {
+        width: 50px;
+        height: 50px;
+    }
+    .card-content {
+        flex: 1;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    table th, table td {
         padding: 15px;
-        margin: 15px 0;
-        border-radius: 6px;
+        text-align: center;
     }
+    table th {
+        background: #1abc9c;
+        color: #fff;
+    }
+    table tr:nth-child(even) {
+        background: #f2f9f7;
+    }
+
+    .dex-types {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+    .dex-type-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transition: transform 0.2s;
+    }
+    .dex-type-card:hover {
+        transform: translateY(-5px);
+    }
+    .dex-type-card img {
+        width: 60px;
+        margin-bottom: 10px;
+    }
+
     footer {
         text-align: center;
         padding: 20px 0;
-        background: #4caf50;
+        background: #1abc9c;
         color: #fff;
         margin-top: 30px;
-        border-radius: 0 0 12px 12px;
+        font-weight: bold;
+    }
+
+    @media(max-width:600px){
+        .card {
+            flex-direction: column;
+            text-align: center;
+        }
     }
 </style>
 </head>
 <body>
 <header>
-    معرفی DEX و CEX
+    DEX و CEX: مقایسه و معرفی
 </header>
+
 <main>
     <h2>DEX چیست؟</h2>
     <p>
-        DEX یا <strong>Decentralised Exchange</strong> یک صرافی غیرمتمرکز است که بدون نیاز به واسطه مرکزی (مثل بانک یا شرکت) کار می‌کند. 
-        کاربران به‌طور مستقیم از طریق کیف پول خود، ارز دیجیتال خرید و فروش می‌کنند و کنترل کامل دارایی‌هایشان را دارند.
+        DEX یا <strong>Decentralised Exchange</strong> یک صرافی غیرمتمرکز است که بدون نیاز به واسطه مرکزی کار می‌کند. 
+        کاربران دارایی‌های خود را مستقیماً از کیف پول مدیریت می‌کنند و تراکنش‌ها از طریق <strong>قرارداد هوشمند</strong> انجام می‌شود.
     </p>
 
-    <h2>تفاوت DEX و CEX</h2>
-    <ul>
-        <li><strong>CEX (Centralized Exchange):</strong> مثل Binance، صرافی متمرکز است و دارایی‌ها و تراکنش‌ها توسط شرکت مدیریت می‌شود.</li>
-        <li><strong>DEX (Decentralised Exchange):</strong> مثل Uniswap یا ShibaSwap، بدون مدیریت مرکزی عمل می‌کند و تراکنش‌ها مستقیماً روی بلاکچین انجام می‌شوند.</li>
-    </ul>
-
-    <div class="example">
-        <strong>مثال‌ها:</strong> <br>
-        CEX: Binance، Coinbase <br>
-        DEX: Uniswap، ShibaSwap
+    <h2>مثال‌ها و کارت معرفی</h2>
+    <div class="card">
+        <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="CEX">
+        <div class="card-content">
+            <strong>CEX (صرافی متمرکز)</strong><br>
+            مثال: Binance، Coinbase. دارایی‌ها توسط صرافی نگهداری می‌شوند و سرعت تراکنش بالا است.
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="DEX">
+        <div class="card-content">
+            <strong>DEX (صرافی غیرمتمرکز)</strong><br>
+            مثال: Uniswap، ShibaSwap. کاربران دارایی‌ها را کنترل می‌کنند و معاملات روی بلاکچین انجام می‌شود.
+        </div>
     </div>
 
-    <h2>مکانیزم DEX</h2>
-    <p>
-        در DEX، معاملات از طریق <strong>قرارداد هوشمند</strong> انجام می‌شود. کاربران دارایی‌هایشان را در کیف پول خود نگه می‌دارند و به جای صرافی، قرارداد هوشمند نقدینگی را مدیریت می‌کند.
-    </p>
-    <p>دو روش اصلی مکانیزم DEX:</p>
-    <ul>
-        <li><strong>Order Book:</strong> لیست سفارش‌ها شبیه CEX، اما غیرمتمرکز. کاربران مستقیماً سفارش می‌گذارند و مطابقت انجام می‌شود.</li>
-        <li><strong>AMM (Automated Market Maker):</strong> مثل Uniswap و ShibaSwap، از استخر نقدینگی استفاده می‌کند. کاربران نقدینگی اضافه می‌کنند و قیمت‌ها به‌صورت خودکار بر اساس نسبت توکن‌ها تعیین می‌شود.</li>
-    </ul>
+    <h2>تفاوت CEX و DEX</h2>
+    <table>
+        <tr>
+            <th>ویژگی</th>
+            <th>CEX</th>
+            <th>DEX</th>
+        </tr>
+        <tr>
+            <td>مالکیت دارایی</td>
+            <td>صرافی</td>
+            <td>کاربر</td>
+        </tr>
+        <tr>
+            <td>احراز هویت (KYC)</td>
+            <td>ضروری</td>
+            <td>اختیاری</td>
+        </tr>
+        <tr>
+            <td>سرعت تراکنش</td>
+            <td>بالا</td>
+            <td>متوسط</td>
+        </tr>
+        <tr>
+            <td>ریسک هک</td>
+            <td>بالا</td>
+            <td>کمتر</td>
+        </tr>
+    </table>
 
-    <h2>مزایای DEX</h2>
+    <h2>انواع DEX</h2>
+    <div class="dex-types">
+        <div class="dex-type-card">
+            <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="AMM">
+            <h3>AMM (Automated Market Maker)</h3>
+            <p>استفاده از استخر نقدینگی و قیمت گذاری خودکار. مثال: Uniswap، ShibaSwap</p>
+        </div>
+        <div class="dex-type-card">
+            <img src="https://cryptologos.cc/logos/dydx-dydx-logo.png" alt="Order Book">
+            <h3>Order Book DEX</h3>
+            <p>دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
+        </div>
+        <div class="dex-type-card">
+            <img src="https://cryptologos.cc/logos/serum-srm-logo.png" alt="Hybrid">
+            <h3>Hybrid DEX</h3>
+            <p>ترکیبی از AMM و Order Book. مثال: Serum</p>
+        </div>
+    </div>
+
+    <h2>مزایا و معایب DEX</h2>
+    <p><strong>مزایا:</strong></p>
     <ul>
-        <li>کنترل کامل دارایی‌ها توسط خود کاربر</li>
-        <li>بدون نیاز به احراز هویت (KYC)</li>
+        <li>کنترل کامل دارایی‌ها توسط کاربر</li>
+        <li>عدم نیاز به KYC</li>
         <li>مقاوم در برابر هک شدن صرافی‌ها</li>
         <li>دسترسی جهانی بدون محدودیت جغرافیایی</li>
     </ul>
-
-    <h2>معایب DEX</h2>
+    <p><strong>معایب:</strong></p>
     <ul>
-        <li>کارمزد شبکه بلاکچین گاهی زیاد است</li>
-        <li>سرعت معاملات پایین‌تر نسبت به CEX</li>
-        <li>امکان لغزش قیمت (Slippage) در معاملات بزرگ</li>
+        <li>کارمزد شبکه بلاکچین گاهی بالا</li>
+        <li>سرعت پایین‌تر نسبت به CEX</li>
+        <li>لغزش قیمت (Slippage) در معاملات بزرگ</li>
     </ul>
 
-    <h2>انواع DEX</h2>
-    <ul>
-        <li><strong>AMM DEX:</strong> از استخر نقدینگی استفاده می‌کند. مثال: Uniswap، ShibaSwap</li>
-        <li><strong>Order Book DEX:</strong> شبیه صرافی متمرکز با دفتر سفارش غیرمتمرکز. مثال: dYdX</li>
-        <li><strong>Hybrid DEX:</strong> ترکیبی از AMM و Order Book. مثال: Serum</li>
-    </ul>
-
-    <h2>جمع‌بندی</h2>
-    <p>
-        DEX برای کسانی مناسب است که می‌خواهند کنترل کامل دارایی‌ها و حریم خصوصی داشته باشند، ولی CEX برای کسانی مناسب است که دنبال سرعت و راحتی بیشتر هستند.
-    </p>
 </main>
+
 <footer>
-    © 2025 - آموزش رمزارزها و بلاکچین
+    © 2025 آموزش رمزارزها و بلاکچین
 </footer>
 </body>
 </html>
