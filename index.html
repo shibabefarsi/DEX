@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>معرفی DEX و CEX</title>
+<title>DEX و CEX تعاملی</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
@@ -11,19 +11,20 @@
         font-family: 'Vazirmatn', sans-serif;
         margin: 0;
         padding: 0;
-        background: #f0f4f8;
+        background: #eef2f7;
         color: #333;
         line-height: 1.6;
     }
 
     header {
-        background: #1abc9c;
+        background: linear-gradient(135deg, #1abc9c, #16a085);
         color: #fff;
         text-align: center;
         padding: 25px 0;
         font-size: 2em;
         font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        letter-spacing: 1px;
     }
 
     main {
@@ -36,6 +37,17 @@
         color: #1abc9c;
         margin-top: 25px;
         margin-bottom: 15px;
+        position: relative;
+    }
+
+    h2::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: #1abc9c;
+        margin-top: 5px;
+        border-radius: 2px;
     }
 
     p {
@@ -51,17 +63,47 @@
         display: flex;
         align-items: center;
         gap: 15px;
-        transition: transform 0.2s;
+        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
     }
+
     .card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        background: #e0f7f1;
     }
+
     .card img {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
+        transition: transform 0.3s;
     }
+
+    .card:hover img {
+        transform: rotate(15deg) scale(1.1);
+    }
+
     .card-content {
         flex: 1;
+    }
+
+    .card-extra {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background: #d1f0e3;
+        padding: 15px;
+        border-top: 1px solid #1abc9c;
+        box-sizing: border-box;
+        transition: bottom 0.3s;
+        font-size: 0.9em;
+    }
+
+    .card:hover .card-extra {
+        bottom: 0;
     }
 
     table {
@@ -72,17 +114,26 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
     }
+
     table th, table td {
         padding: 15px;
         text-align: center;
+        transition: background 0.3s;
     }
+
     table th {
         background: #1abc9c;
         color: #fff;
     }
+
     table tr:nth-child(even) {
         background: #f2f9f7;
+    }
+
+    table tr:hover td {
+        background: #d1f0e3;
     }
 
     .dex-types {
@@ -91,29 +142,59 @@
         gap: 15px;
         margin-top: 15px;
     }
+
     .dex-type-card {
         background: #fff;
         border-radius: 12px;
-        padding: 15px;
+        padding: 20px;
         text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        transition: transform 0.2s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
     }
+
     .dex-type-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
+        background: #e0f7f1;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
+
     .dex-type-card img {
-        width: 60px;
+        width: 70px;
         margin-bottom: 10px;
+        transition: transform 0.3s;
+    }
+
+    .dex-type-card:hover img {
+        transform: rotate(-10deg) scale(1.1);
+    }
+
+    .dex-extra {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background: #c3f0e0;
+        padding: 10px;
+        border-top: 1px solid #1abc9c;
+        transition: bottom 0.3s;
+        font-size: 0.85em;
+    }
+
+    .dex-type-card:hover .dex-extra {
+        bottom: 0;
     }
 
     footer {
         text-align: center;
         padding: 20px 0;
-        background: #1abc9c;
+        background: linear-gradient(135deg, #1abc9c, #16a085);
         color: #fff;
         margin-top: 30px;
         font-weight: bold;
+        letter-spacing: 1px;
     }
 
     @media(max-width:600px){
@@ -126,7 +207,7 @@
 </head>
 <body>
 <header>
-    DEX و CEX: مقایسه و معرفی
+    DEX و CEX تعاملی
 </header>
 
 <main>
@@ -143,12 +224,19 @@
             <strong>CEX (صرافی متمرکز)</strong><br>
             مثال: Binance، Coinbase. دارایی‌ها توسط صرافی نگهداری می‌شوند و سرعت تراکنش بالا است.
         </div>
+        <div class="card-extra">
+            دارایی‌ها روی کیف پول صرافی نگهداری می‌شود و امنیت به مدیریت صرافی بستگی دارد.
+        </div>
     </div>
+
     <div class="card">
         <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="DEX">
         <div class="card-content">
             <strong>DEX (صرافی غیرمتمرکز)</strong><br>
             مثال: Uniswap، ShibaSwap. کاربران دارایی‌ها را کنترل می‌کنند و معاملات روی بلاکچین انجام می‌شود.
+        </div>
+        <div class="card-extra">
+            کاربران نقدینگی را به استخرها اضافه می‌کنند و قرارداد هوشمند قیمت و تراکنش را مدیریت می‌کند.
         </div>
     </div>
 
@@ -187,33 +275,21 @@
             <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="AMM">
             <h3>AMM (Automated Market Maker)</h3>
             <p>استفاده از استخر نقدینگی و قیمت گذاری خودکار. مثال: Uniswap، ShibaSwap</p>
+            <div class="dex-extra">کاربران نقدینگی اضافه می‌کنند و قیمت‌ها به صورت خودکار با نسبت توکن‌ها تعیین می‌شوند.</div>
         </div>
         <div class="dex-type-card">
             <img src="https://cryptologos.cc/logos/dydx-dydx-logo.png" alt="Order Book">
             <h3>Order Book DEX</h3>
             <p>دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
+            <div class="dex-extra">سفارش‌ها مستقیماً توسط کاربران گذاشته می‌شوند و مطابقت انجام می‌شود.</div>
         </div>
         <div class="dex-type-card">
             <img src="https://cryptologos.cc/logos/serum-srm-logo.png" alt="Hybrid">
             <h3>Hybrid DEX</h3>
             <p>ترکیبی از AMM و Order Book. مثال: Serum</p>
+            <div class="dex-extra">ترکیبی از استخر نقدینگی و دفتر سفارش برای افزایش سرعت و کارایی.</div>
         </div>
     </div>
-
-    <h2>مزایا و معایب DEX</h2>
-    <p><strong>مزایا:</strong></p>
-    <ul>
-        <li>کنترل کامل دارایی‌ها توسط کاربر</li>
-        <li>عدم نیاز به KYC</li>
-        <li>مقاوم در برابر هک شدن صرافی‌ها</li>
-        <li>دسترسی جهانی بدون محدودیت جغرافیایی</li>
-    </ul>
-    <p><strong>معایب:</strong></p>
-    <ul>
-        <li>کارمزد شبکه بلاکچین گاهی بالا</li>
-        <li>سرعت پایین‌تر نسبت به CEX</li>
-        <li>لغزش قیمت (Slippage) در معاملات بزرگ</li>
-    </ul>
 
 </main>
 
