@@ -102,7 +102,7 @@
         box-sizing: border-box;
         transition: bottom 0.3s;
         font-size: 0.95em;
-        color: #000; /* خوانایی بهتر کاربران */
+        color: #000;
     }
 
     .card:hover .card-extra {
@@ -146,6 +146,7 @@
         margin-top: 15px;
     }
 
+    /* کارت‌های انواع DEX */
     .dex-type-card {
         background: #fff;
         border-radius: 12px;
@@ -156,6 +157,10 @@
         cursor: pointer;
         overflow: hidden;
         position: relative;
+        min-height: 280px; /* جا برای متن + بخش extra */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .dex-type-card:hover {
@@ -165,13 +170,27 @@
     }
 
     .dex-type-card img {
-        width: 70px;
-        margin-bottom: 10px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto 10px;
         transition: transform 0.3s;
     }
 
     .dex-type-card:hover img {
-        transform: rotate(-10deg) scale(1.1);
+        transform: rotate(-5deg) scale(1.05);
+    }
+
+    .dex-type-card h3 {
+        margin: 8px 0;
+        font-size: 1.1em;
+        color: #333;
+    }
+
+    .dex-type-card p {
+        font-size: 0.95em;
+        margin: 5px 0 15px;
+        color: #444;
     }
 
     .dex-extra {
@@ -180,11 +199,12 @@
         left: 0;
         width: 100%;
         background: #c3f0e0;
-        padding: 10px;
+        padding: 12px;
         border-top: 1px solid #1abc9c;
-        transition: bottom 0.3s;
-        font-size: 0.95em;
-        color: #000;
+        font-size: 0.9em;
+        line-height: 1.5;
+        transition: bottom 0.35s ease;
+        box-sizing: border-box;
     }
 
     .dex-type-card:hover .dex-extra {
@@ -205,18 +225,6 @@
         .card {
             flex-direction: column;
             text-align: center;
-        }
-
-        /* موبایل: dex-extra همیشه نمایش و کادر زرد */
-        .dex-extra {
-            position: relative;
-            bottom: 0;
-            display: block;
-            background: #fff9c4;
-            border-top: 1px solid #f0e68c;
-            padding: 10px;
-            margin-top: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
     }
 </style>
@@ -306,14 +314,14 @@
         </div>
 
         <div class="dex-type-card">
-            <a href="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" target="_blank" style="display: block; text-align: center;">
-                <img src="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" alt="Order Book" style="max-width: 100%; height: auto;">
+            <a href="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" target="_blank">
+                <img src="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" alt="Order Book">
             </a>
-            <span style="font-size: 9px; color: gray; display: block; text-align: center; margin-top: 5px;">
+            <span style="font-size: 9px; color: gray; display: block; text-align: center; margin-top: -5px; margin-bottom: 5px;">
                 (برای دیدن تصویر بزرگ روی این عکس کلیک کنید)
             </span>
-            <h3 style="text-align: center;">Order Book DEX</h3>
-            <p style="text-align: center;">دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
+            <h3>Order Book DEX</h3>
+            <p>دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
             <div class="dex-extra">سفارش‌ها مستقیماً توسط کاربران گذاشته می‌شوند و مطابقت انجام می‌شود.</div>
         </div>
 
