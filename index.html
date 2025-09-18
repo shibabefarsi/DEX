@@ -1,341 +1,125 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEX و CEX تعاملی</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dex Types Scroll Reveal</title>
+  <style>
     body {
-        font-family: 'Vazirmatn', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #eef2f7;
-        color: #333;
-        line-height: 1.6;
-        direction: rtl;
-        text-align: right;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 30px;
     }
 
-    header {
-        background: linear-gradient(135deg, #1abc9c, #16a085);
-        color: #fff;
-        text-align: center;
-        padding: 25px 0;
-        font-size: 2em;
-        font-weight: bold;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        letter-spacing: 1px;
+    .dex-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    main {
-        max-width: 1000px;
-        margin: 30px auto;
-        padding: 20px;
-    }
-
-    h2 {
-        color: #1abc9c;
-        margin-top: 25px;
-        margin-bottom: 15px;
-        position: relative;
-    }
-
-    h2::after {
-        content: '';
-        display: block;
-        width: 50px;
-        height: 4px;
-        background: #1abc9c;
-        margin-top: 5px;
-        border-radius: 2px;
-    }
-
-    p {
-        margin: 12px 0;
-    }
-
-    .card {
-        background: #fff;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-        cursor: pointer;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        background: #e0f7f1;
-    }
-
-    .card img {
-        width: 60px;
-        height: 60px;
-        transition: transform 0.3s;
-    }
-
-    .card:hover img {
-        transform: rotate(15deg) scale(1.1);
-    }
-
-    .card-content {
-        flex: 1;
-    }
-
-    .card-extra {
-        position: absolute;
-        bottom: -100%;
-        left: 0;
-        width: 100%;
-        background: #d1f0e3;
-        padding: 15px;
-        border-top: 1px solid #1abc9c;
-        box-sizing: border-box;
-        transition: bottom 0.3s;
-        font-size: 0.95em;
-        color: #000;
-    }
-
-    .card:hover .card-extra {
-        bottom: 0;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 15px 0;
-        background: #fff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: transform 0.3s;
-    }
-
-    table th, table td {
-        padding: 15px;
-        text-align: center;
-        transition: background 0.3s;
-    }
-
-    table th {
-        background: #1abc9c;
-        color: #fff;
-    }
-
-    table tr:nth-child(even) {
-        background: #f2f9f7;
-    }
-
-    table tr:hover td {
-        background: #d1f0e3;
-    }
-
-    .dex-types {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-        margin-top: 15px;
-    }
-
-    /* کارت‌های انواع DEX */
     .dex-type-card {
-        background: #fff;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-        cursor: pointer;
-        overflow: hidden;
-        position: relative;
-        min-height: 280px; /* جا برای متن + بخش extra */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    .dex-type-card:hover {
-        transform: translateY(-8px);
-        background: #e0f7f1;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .dex-type-card img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto 10px;
-        transition: transform 0.3s;
-    }
-
-    .dex-type-card:hover img {
-        transform: rotate(-5deg) scale(1.05);
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
     }
 
     .dex-type-card h3 {
-        margin: 8px 0;
-        font-size: 1.1em;
-        color: #333;
+      margin: 8px 0;
+      font-size: 1.1em;
+      color: #333;
     }
 
     .dex-type-card p {
-        font-size: 0.95em;
-        margin: 5px 0 15px;
-        color: #444;
+      font-size: 0.95em;
+      margin: 5px 0 15px;
+      color: #444;
     }
 
+    /* بخش اضافه (extra) */
     .dex-extra {
-        position: absolute;
-        bottom: -100%;
-        left: 0;
-        width: 100%;
-        background: #c3f0e0;
-        padding: 12px;
-        border-top: 1px solid #1abc9c;
-        font-size: 0.9em;
-        line-height: 1.5;
-        transition: bottom 0.35s ease;
-        box-sizing: border-box;
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background: #c3f0e0;
+      padding: 12px;
+      border-top: 1px solid #1abc9c;
+      font-size: 0.9em;
+      line-height: 1.5;
+      transition: bottom 0.5s ease;
+      box-sizing: border-box;
     }
 
-    .dex-type-card:hover .dex-extra {
-        bottom: 0;
+    /* وقتی کارت دیده شد */
+    .dex-type-card.revealed .dex-extra {
+      bottom: 0;
     }
-
-    footer {
-        text-align: center;
-        padding: 20px 0;
-        background: linear-gradient(135deg, #1abc9c, #16a085);
-        color: #fff;
-        margin-top: 30px;
-        font-weight: bold;
-        letter-spacing: 1px;
-    }
-
-    @media(max-width:600px){
-        .card {
-            flex-direction: column;
-            text-align: center;
-        }
-    }
-</style>
+  </style>
 </head>
 <body>
-<header>
-    DEX و CEX تعاملی
-</header>
 
-<main>
-    <h2>DEX چیست؟</h2>
-    <p>
-        DEX یا <strong>Decentralised Exchange</strong> یک صرافی غیرمتمرکز است که بدون نیاز به واسطه مرکزی کار می‌کند. 
-        کاربران دارایی‌های خود را مستقیماً از کیف پول مدیریت می‌کنند و تراکنش‌ها از طریق <strong>قرارداد هوشمند</strong> انجام می‌شود.
-    </p>
-
-    <h2>
-        مثال‌ها و کارت معرفی 
-        <span style="font-size: 14px; color: gray;">
-        (با نگهداشتن موس روی کارت‌های زیر اطلاعات بیشتر نمایان می‌شود)
-        </span>
-    </h2>
-    <div class="card">
-        <img src="https://i.ibb.co/HpnhJtbW/cex.png" alt="CEX">
-        <div class="card-content">
-            <strong>CEX (صرافی متمرکز)</strong><br>
-            مثال: Binance، Coinbase. دارایی‌ها توسط صرافی نگهداری می‌شوند و سرعت تراکنش بالا است.
-        </div>
-        <div class="card-extra">
-            دارایی‌ها روی کیف پول صرافی نگهداری می‌شود و امنیت به مدیریت صرافی بستگی دارد.
-        </div>
+  <h1>انواع دکس‌ها</h1>
+  <div class="dex-container">
+    <div class="dex-type-card">
+      <img src="https://via.placeholder.com/150" alt="DEX 1">
+      <h3>DEX نوع ۱</h3>
+      <p>توضیح کوتاه درباره دکس نوع ۱</p>
+      <div class="dex-extra">
+        این بخش اضافه وقتی کارت وارد صفحه بشه نمایش داده میشه.
+      </div>
     </div>
 
-    <div class="card">
-        <img src="https://i.ibb.co/TBDQxLpD/dex.png" alt="DEX">
-        <div class="card-content">
-            <strong>DEX (صرافی غیرمتمرکز)</strong><br>
-            مثال: Uniswap، ShibaSwap. کاربران دارایی‌ها را کنترل می‌کنند و معاملات روی بلاکچین انجام می‌شود.
-        </div>
-        <div class="card-extra">
-            کاربران نقدینگی را به استخرها اضافه می‌کنند و قرارداد هوشمند قیمت و تراکنش را مدیریت می‌کند.
-        </div>
+    <div class="dex-type-card">
+      <img src="https://via.placeholder.com/150" alt="DEX 2">
+      <h3>DEX نوع ۲</h3>
+      <p>توضیح کوتاه درباره دکس نوع ۲</p>
+      <div class="dex-extra">
+        متن اضافه برای دکس نوع ۲
+      </div>
     </div>
 
-    <h2>تفاوت CEX و DEX</h2>
-    <table>
-        <tr>
-            <th>ویژگی</th>
-            <th>CEX</th>
-            <th>DEX</th>
-        </tr>
-        <tr>
-            <td>مالکیت دارایی</td>
-            <td>صرافی</td>
-            <td>کاربر</td>
-        </tr>
-        <tr>
-            <td>احراز هویت (KYC)</td>
-            <td>ضروری</td>
-            <td>اختیاری</td>
-        </tr>
-        <tr>
-            <td>سرعت تراکنش</td>
-            <td>بالا</td>
-            <td>متوسط</td>
-        </tr>
-        <tr>
-            <td>ریسک هک</td>
-            <td>بالا</td>
-            <td>کمتر</td>
-        </tr>
-    </table>
-
-    <h2>
-        انواع DEX
-        <span style="font-size: 14px; color: gray;">
-        (با نگهداشتن موس روی کارت‌های زیر اطلاعات بیشتر نمایان می‌شود)
-        </span>
-    </h2>
-
-    <div class="dex-types">
-        <div class="dex-type-card">
-            <img src="https://i.ibb.co/Txhb6GPc/AMM.png" alt="AMM">
-            <h3>AMM (Automated Market Maker)</h3>
-            <p>استفاده از استخر نقدینگی و قیمت گذاری خودکار. مثال: Uniswap، ShibaSwap</p>
-            <div class="dex-extra">کاربران نقدینگی اضافه می‌کنند و قیمت‌ها به صورت خودکار با نسبت توکن‌ها تعیین می‌شوند.</div>
-        </div>
-
-        <div class="dex-type-card">
-            <a href="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" target="_blank">
-                <img src="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" alt="Order Book">
-            </a>
-            <span style="font-size: 9px; color: gray; display: block; text-align: center; margin-top: -5px; margin-bottom: 5px;">
-                (برای دیدن تصویر بزرگ روی این عکس کلیک کنید)
-            </span>
-            <h3>Order Book DEX</h3>
-            <p>دفتر سفارش غیرمتمرکز، شبیه صرافی سنتی. مثال: dYdX</p>
-            <div class="dex-extra">سفارش‌ها مستقیماً توسط کاربران گذاشته می‌شوند و مطابقت انجام می‌شود.</div>
-        </div>
-
-        <div class="dex-type-card">
-            <img src="https://i.ibb.co/r2Kq8MpV/hybrid.png" alt="Hybrid">
-            <h3>Hybrid DEX</h3>
-            <p>ترکیبی از AMM و Order Book. مثال: Serum</p>
-            <div class="dex-extra">ترکیبی از استخر نقدینگی و دفتر سفارش برای افزایش سرعت و کارایی.</div>
-        </div>
+    <div class="dex-type-card">
+      <img src="https://via.placeholder.com/150" alt="DEX 3">
+      <h3>DEX نوع ۳</h3>
+      <p>توضیح کوتاه درباره دکس نوع ۳</p>
+      <div class="dex-extra">
+        توضیحات کامل‌تر اینجا میاد.
+      </div>
     </div>
-</main>
+  </div>
 
-<footer>
-    © 2025 آموزش رمزارزها و بلاکچین توسط مجموعه شیبا به فارسی
-</footer>
+  <script>
+    // استفاده از Intersection Observer برای اسکرول
+    const cards = document.querySelectorAll('.dex-type-card');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.3 }); // وقتی 30% کارت دیده شد
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
