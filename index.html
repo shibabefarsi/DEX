@@ -54,7 +54,7 @@
 
     p { margin: 12px 0; }
 
-    /* کارت CEX و DEX */
+    /* کارت */
     .card {
         background: #fff;
         border-radius: 12px;
@@ -144,10 +144,6 @@
         cursor: pointer;
         overflow: hidden;
         position: relative;
-        min-height: 280px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
     }
 
     .dex-type-card:hover {
@@ -157,26 +153,13 @@
     }
 
     .dex-type-card img {
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto 10px;
+        width: 70px;
+        margin-bottom: 10px;
         transition: transform 0.3s;
     }
 
     .dex-type-card:hover img {
-        transform: rotate(-5deg) scale(1.05);
-    }
-
-    .dex-type-card h3 {
-        margin: 8px 0;
-        font-size: 1.1em;
-        color: #333;
-    }
-
-    .dex-type-card p {
-        font-size: 0.95em;
-        margin: 5px 0 15px;
-        color: #444;
+        transform: rotate(-10deg) scale(1.1);
     }
 
     .dex-extra {
@@ -185,12 +168,11 @@
         left: 0;
         width: 100%;
         background: #c3f0e0;
-        padding: 12px;
+        padding: 10px;
         border-top: 1px solid #1abc9c;
+        transition: bottom 0.3s;
         font-size: 0.9em;
-        line-height: 1.5;
-        transition: bottom 0.35s ease;
-        box-sizing: border-box;
+        color: #000;
     }
 
     .dex-type-card:hover .dex-extra {
@@ -205,26 +187,22 @@
         color: #fff;
         margin-top: 30px;
         font-weight: bold;
+        letter-spacing: 1px;
     }
 
-    /* 🔹 نسخه موبایل: همیشه توضیحات باز باشه */
-    @media (hover: none) and (pointer: coarse) {
-        .card-extra,
-        .dex-extra {
-            position: static;
-            bottom: auto;
-            opacity: 1;
-            padding: 12px;
-        }
-
-        .card,
-        .dex-type-card {
-            cursor: default;
-        }
-    }
-
+    /* موبایل */
     @media(max-width:600px){
         .card { flex-direction: column; text-align: center; }
+        .dex-extra, .card-extra {
+            position: relative;
+            bottom: 0;
+            display: block;
+            background: #fff9c4;
+            border-top: 1px solid #f0e68c;
+            padding: 10px;
+            margin-top: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
     }
 </style>
 </head>
@@ -235,54 +213,97 @@
 
 <main>
     <h2>DEX چیست؟</h2>
-    <p>DEX یا <strong>Decentralised Exchange</strong> یک صرافی غیرمتمرکز است...</p>
+    <p>
+        DEX یا <strong>Decentralised Exchange</strong> یک صرافی غیرمتمرکز است که بدون واسطه مرکزی فعالیت می‌کند.
+        کاربران دارایی‌های خود را مستقیم از کیف پول مدیریت می‌کنند و تراکنش‌ها توسط <strong>قراردادهای هوشمند</strong> انجام می‌شوند.
+    </p>
 
-    <h2>مثال‌ها و کارت معرفی</h2>
+    <h2>مثال‌ها و کارت معرفی <span style="font-size: 14px; color: gray;">(برای دیدن جزئیات بیشتر موس را روی کارت نگه دارید)</span></h2>
+
     <div class="card">
         <img src="https://i.ibb.co/HpnhJtbW/cex.png" alt="CEX">
         <div class="card-content">
             <strong>CEX (صرافی متمرکز)</strong><br>
-            مثال: Binance، Coinbase.
+            مثال: Binance، Coinbase
         </div>
-        <div class="card-extra">دارایی‌ها روی کیف پول صرافی نگهداری می‌شود...</div>
+        <div class="card-extra">
+            در CEX دارایی‌ها روی کیف پول صرافی نگهداری می‌شود. سرعت تراکنش‌ها بالاست اما امنیت دارایی‌ها وابسته به صرافی است.
+        </div>
     </div>
 
     <div class="card">
         <img src="https://i.ibb.co/TBDQxLpD/dex.png" alt="DEX">
         <div class="card-content">
             <strong>DEX (صرافی غیرمتمرکز)</strong><br>
-            مثال: Uniswap، ShibaSwap.
+            مثال: Uniswap، ShibaSwap
         </div>
-        <div class="card-extra">کاربران نقدینگی را به استخرها اضافه می‌کنند...</div>
+        <div class="card-extra">
+            در DEX کاربران دارایی را در کیف پول خود نگه می‌دارند. معاملات روی بلاکچین انجام می‌شود و نقدینگی توسط کاربران تأمین می‌گردد.
+        </div>
     </div>
 
-    <h2>انواع DEX</h2>
+    <h2>تفاوت CEX و DEX</h2>
+    <table>
+        <tr>
+            <th>ویژگی</th>
+            <th>CEX</th>
+            <th>DEX</th>
+        </tr>
+        <tr>
+            <td>مالکیت دارایی</td>
+            <td>صرافی</td>
+            <td>کاربر</td>
+        </tr>
+        <tr>
+            <td>احراز هویت (KYC)</td>
+            <td>اجباری</td>
+            <td>اختیاری</td>
+        </tr>
+        <tr>
+            <td>سرعت تراکنش</td>
+            <td>بالا</td>
+            <td>متوسط</td>
+        </tr>
+        <tr>
+            <td>ریسک هک</td>
+            <td>بالا</td>
+            <td>کمتر</td>
+        </tr>
+    </table>
+
+    <h2>انواع DEX <span style="font-size: 14px; color: gray;">(برای دیدن جزئیات موس را روی کارت نگه دارید)</span></h2>
     <div class="dex-types">
         <div class="dex-type-card">
             <img src="https://i.ibb.co/Txhb6GPc/AMM.png" alt="AMM">
-            <h3>AMM</h3>
-            <p>استفاده از استخر نقدینگی</p>
-            <div class="dex-extra">قیمت‌ها به صورت خودکار تعیین می‌شوند.</div>
+            <h3>AMM (Automated Market Maker)</h3>
+            <p>استفاده از استخر نقدینگی و قیمت‌گذاری خودکار. مثال: Uniswap، ShibaSwap</p>
+            <div class="dex-extra">
+                در مدل AMM کاربران توکن‌های خود را در استخر نقدینگی واریز می‌کنند. قیمت‌ها براساس نسبت توکن‌ها در استخر به صورت خودکار تعیین می‌شوند.
+            </div>
         </div>
 
         <div class="dex-type-card">
             <img src="https://i.ibb.co/KpV4PNVL/dydx-interface-order-book-1.webp" alt="Order Book">
-            <h3>Order Book</h3>
-            <p>دفتر سفارش غیرمتمرکز</p>
-            <div class="dex-extra">سفارش‌ها توسط کاربران گذاشته می‌شوند.</div>
+            <h3>Order Book DEX</h3>
+            <p>دفتر سفارش غیرمتمرکز. مثال: dYdX</p>
+            <div class="dex-extra">
+                در Order Book کاربران سفارش خرید و فروش ثبت می‌کنند. سفارش‌ها روی بلاکچین ذخیره می‌شود و تطابق سفارش‌ها به صورت غیرمتمرکز انجام می‌گردد.
+            </div>
         </div>
 
         <div class="dex-type-card">
             <img src="https://i.ibb.co/r2Kq8MpV/hybrid.png" alt="Hybrid">
-            <h3>Hybrid</h3>
-            <p>ترکیبی از AMM و Order Book</p>
-            <div class="dex-extra">ترکیبی از دو مدل برای سرعت بیشتر.</div>
+            <h3>Hybrid DEX</h3>
+            <p>ترکیب AMM و Order Book. مثال: Serum</p>
+            <div class="dex-extra">
+                در Hybrid DEX هم از استخر نقدینگی و هم دفتر سفارش استفاده می‌شود. این ترکیب باعث افزایش سرعت و کارایی معاملات می‌شود.
+            </div>
         </div>
     </div>
 </main>
 
 <footer>
-    © 2025 آموزش رمزارزها و بلاکچین
+    © 2025 آموزش رمزارزها و بلاکچین توسط مجموعه شیبا به فارسی
 </footer>
 </body>
 </html>
