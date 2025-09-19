@@ -88,22 +88,24 @@
 
     .card-content { flex: 1; }
 
+    /* تغییر اصلی برای کارت‌های CEX و DEX */
     .card-extra {
-        position: absolute;
-        bottom: -100%;
-        left: 0;
-        width: 100%;
+        position: relative;  /* دیگر absolute نیست */
+        bottom: 0;
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
         background: #d1f0e3;
         padding: 15px;
         border-top: 1px solid #1abc9c;
         box-sizing: border-box;
-        transition: bottom 0.3s;
         font-size: 0.95em;
         color: #000;
     }
 
     .card:hover .card-extra {
-        bottom: 0;
+        transform: translateY(0);
+        opacity: 1;
     }
 
     /* جدول */
@@ -162,7 +164,7 @@
         transform: rotate(-10deg) scale(1.1);
     }
 
-    /* تغییر اصلی برای نمایش کامل متن */
+    /* تغییر اصلی برای نمایش کامل متن DEX types */
     .dex-extra {
         position: relative;   /* دیگر absolute نیست */
         bottom: 0;
