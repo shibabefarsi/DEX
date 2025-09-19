@@ -54,8 +54,9 @@
 
     p { margin: 12px 0; }
 
-    /* کارت */
+    /* کارت‌ها */
     .card {
+        position: relative; /* برای card-extra */
         background: #fff;
         border-radius: 12px;
         padding: 20px;
@@ -67,7 +68,7 @@
         transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
         cursor: pointer;
         overflow: hidden;
-        position: relative;
+        min-height: 100px; /* ارتفاع کافی برای متن اصلی */
     }
 
     .card:hover {
@@ -88,24 +89,23 @@
 
     .card-content { flex: 1; }
 
-    /* تغییر اصلی برای کارت‌های CEX و DEX */
+    /* متن اضافی کارت‌ها */
     .card-extra {
-        position: relative;  /* دیگر absolute نیست */
-        bottom: 0;
-        transform: translateY(100%);
-        opacity: 0;
-        transition: transform 0.4s ease, opacity 0.4s ease;
+        position: absolute;  /* روی متن اصلی قرار نمی‌گیرد */
+        left: 0;
+        bottom: -100%;
+        width: 100%;
         background: #d1f0e3;
         padding: 15px;
         border-top: 1px solid #1abc9c;
         box-sizing: border-box;
         font-size: 0.95em;
         color: #000;
+        transition: bottom 0.3s ease;
     }
 
     .card:hover .card-extra {
-        transform: translateY(0);
-        opacity: 1;
+        bottom: 0;
     }
 
     /* جدول */
@@ -137,6 +137,7 @@
     }
 
     .dex-type-card {
+        position: relative; /* برای dex-extra */
         background: #fff;
         border-radius: 12px;
         padding: 20px;
@@ -145,7 +146,6 @@
         transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
         cursor: pointer;
         overflow: hidden;
-        position: relative;
     }
 
     .dex-type-card:hover {
@@ -164,23 +164,21 @@
         transform: rotate(-10deg) scale(1.1);
     }
 
-    /* تغییر اصلی برای نمایش کامل متن DEX types */
     .dex-extra {
-        position: relative;   /* دیگر absolute نیست */
-        bottom: 0;
-        transform: translateY(100%);
-        opacity: 0;
-        transition: transform 0.4s ease, opacity 0.4s ease;
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
         background: #c3f0e0;
         padding: 10px;
         border-top: 1px solid #1abc9c;
         font-size: 0.9em;
         color: #000;
+        transition: bottom 0.3s ease;
     }
 
     .dex-type-card:hover .dex-extra {
-        transform: translateY(0);
-        opacity: 1;
+        bottom: 0;
     }
 
     /* فوتر */
@@ -196,8 +194,8 @@
 
     /* موبایل */
     @media(max-width:600px){
-        .card { flex-direction: column; text-align: center; }
-        .dex-extra, .card-extra {
+        .card, .dex-type-card { flex-direction: column; text-align: center; min-height: auto; }
+        .card-extra, .dex-extra {
             position: relative;
             bottom: 0;
             display: block;
