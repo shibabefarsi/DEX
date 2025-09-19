@@ -54,6 +54,7 @@
 
     p { margin: 12px 0; }
 
+    /* کارت CEX و DEX */
     .card {
         background: #fff;
         border-radius: 12px;
@@ -87,25 +88,25 @@
 
     .card-content { flex: 1; }
 
-    /* بخش اضافه کارت‌های CEX/DEX */
     .card-extra {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
         background: #d1f0e3;
-        padding: 0 15px;
+        padding: 15px;
         border-top: 1px solid #1abc9c;
         box-sizing: border-box;
+        transition: bottom 0.3s;
         font-size: 0.95em;
         color: #000;
-        transition: all 0.5s ease;
-    }
-    .card.revealed .card-extra {
-        max-height: 200px;
-        opacity: 1;
-        padding: 15px;
     }
 
+    .card:hover .card-extra {
+        bottom: 0;
+    }
+
+    /* جدول */
     table {
         width: 100%;
         border-collapse: collapse;
@@ -114,21 +115,18 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: transform 0.3s;
     }
 
     table th, table td {
         padding: 15px;
         text-align: center;
-        transition: background 0.3s;
     }
 
     table th { background: #1abc9c; color: #fff; }
-
     table tr:nth-child(even) { background: #f2f9f7; }
-
     table tr:hover td { background: #d1f0e3; }
 
+    /* کارت‌های انواع DEX */
     .dex-types {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -152,9 +150,21 @@
         justify-content: flex-start;
     }
 
+    .dex-type-card:hover {
+        transform: translateY(-8px);
+        background: #e0f7f1;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
     .dex-type-card img {
         max-width: 100%;
+        height: auto;
         margin: 0 auto 10px;
+        transition: transform 0.3s;
+    }
+
+    .dex-type-card:hover img {
+        transform: rotate(-5deg) scale(1.05);
     }
 
     .dex-type-card h3 {
@@ -169,24 +179,25 @@
         color: #444;
     }
 
-    /* بخش اضافه برای DEX ها */
     .dex-extra {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
         background: #c3f0e0;
-        padding: 0 12px;
+        padding: 12px;
         border-top: 1px solid #1abc9c;
         font-size: 0.9em;
         line-height: 1.5;
-        transition: all 0.5s ease;
-    }
-    .dex-type-card.revealed .dex-extra {
-        max-height: 200px;
-        opacity: 1;
-        padding: 12px;
+        transition: bottom 0.35s ease;
+        box-sizing: border-box;
     }
 
+    .dex-type-card:hover .dex-extra {
+        bottom: 0;
+    }
+
+    /* فوتر */
     footer {
         text-align: center;
         padding: 20px 0;
@@ -194,7 +205,22 @@
         color: #fff;
         margin-top: 30px;
         font-weight: bold;
-        letter-spacing: 1px;
+    }
+
+    /* 🔹 نسخه موبایل: همیشه توضیحات باز باشه */
+    @media (hover: none) and (pointer: coarse) {
+        .card-extra,
+        .dex-extra {
+            position: static;
+            bottom: auto;
+            opacity: 1;
+            padding: 12px;
+        }
+
+        .card,
+        .dex-type-card {
+            cursor: default;
+        }
     }
 
     @media(max-width:600px){
@@ -258,19 +284,5 @@
 <footer>
     © 2025 آموزش رمزارزها و بلاکچین
 </footer>
-
-<script>
-  const cards = document.querySelectorAll('.card, .dex-type-card');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  cards.forEach(card => observer.observe(card));
-</script>
 </body>
 </html>
